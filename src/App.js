@@ -8,11 +8,14 @@ class App extends Component {
 
   state = {
     books: [
-      { title: 'test1', shelf:'lu'},
-      {title: 'test2', shelf:'à lire'}
+
     ]
   };
-
+  componentDidMount() {
+    getAll().then((books) => {
+      this.setState({ books });
+    });
+  }
 
   render() {
     return (
