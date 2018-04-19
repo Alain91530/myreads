@@ -9,14 +9,14 @@ body {
 }
 .book{
   display: flex;
-  flex-flow: column;
+  flex-flow: wrap;
   justify-content: center;
   margin-left: 0;
   width: 25%;
 }
 .book-list{
   display: flex;
-  flex-flow: row;
+  flex-flow: wrap;
   justify-content: center;
   list-style-type: none;
   font-size: 0.7em;
@@ -25,19 +25,21 @@ body {
 
 .book-authors{
   color: grey;
+  text-align: center;
 }
 
 .book-cover{
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   height: 170px;
   margin: auto;
-  max-width: 25vw;
+  text-align: center;
   width:128px;
 }
 
 .book-title{
   font-weight: bold;
+  text-align: center;
   width: 100%;
 }
 .App-header{
