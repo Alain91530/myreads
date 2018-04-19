@@ -49,6 +49,7 @@ body {
 
 .search-book{
   background-image: url("./icons/plus.svg");
+  color: white;
   height: 50px;
   position: sticky;
   left: 90%;

@@ -4,7 +4,7 @@ import {search} from './BooksAPI';
 class SearchBooks extends Component {
   state = {
     searchedBooks: [],
-    query: 'H'
+    query: 'C'
   };
 
   /* Get all books from the data base and update state to have it renderer    */
