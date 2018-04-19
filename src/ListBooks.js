@@ -1,23 +1,48 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types';
+import sortBy from 'sort-by';
 
+/* Enforce type of props                                                      */
 
 class ListBooks extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    shelves: PropTypes.array.isRequired
   }
 
+  /* Render the shelves                                                       */
+
   render() {
+    /* const just for convenience                                             */
     const books = this.props.books;
+    const shelves = this.props.shelves;
+    /* Sort books just cause it's nicer                                       */
+    books.sort(sortBy('title'));
+    /* Construct the DOM looping on shelves and on books inside a shelf       */
     return (
       <div>
-        {books.map((book)=>(
-          <div key={book.title}>
-            <p> {book.title}</p>
-            <p> {book.shelf}</p>
-          </div>
-        ))
-        }
+        <div className='shelves'>
+          {shelves.map((shelf) => (
+            <div key={shelf} className='shelf'>
+              <h2 className='shelf-title'>{shelf}</h2>
+              <ul className='book-list'>
+                {books.filter((book)=>(book.shelf===shelf)).map((book)=>(
+                  <li key={book.id} className='book'>
+                    <div className="book-cover"
+                      style={{
+                        backgroundImage: `url(${book.imageLinks.smallThumbnail})`
+                      }} />
+                    <p className='book-title'> {book.title}</p>
+                    <p className='book-authors'> {book.authors}</p>
+                  </li>
+                ))
+                }
+              </ul>
+            </div>
+
+          ))}
+        </div>
+
       </div>);
   }
 }
