@@ -48,12 +48,16 @@ body {
 }
 
 .search-book{
-  background-image: url("./icons/plus.svg");
+  background-image: url("./icons/plus1.png");
+  background-repeat: no-repeat;
+  background-size: 50px;
   color: white;
+  display: block;
+  font-size: 0;
   height: 50px;
   position: sticky;
   left: 90%;
-  bottom: 3vh;
+  bottom: 5vh;
   width: 50px;
 
 }
