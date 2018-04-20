@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+import RenderBook from './RenderBook';    // eslint-disable-line no-unused-vars
 import {search} from './BooksAPI';
 
 class SearchBooks extends Component {
@@ -65,12 +66,9 @@ class SearchBooks extends Component {
             <ul className='book-list'>
               {searchedBooks.map((book)=>(
                 <li key={book.id} className='book'>
-                  <div className="book-cover"
-                    style={{
-                      backgroundImage: `url(${book.imageLinks.thumbnail})`
-                    }} />
-                  <p className='book-title'> {book.title}</p>
-                  <p className='book-authors'> {book.authors}</p>
+                  <RenderBook
+                    book={book}
+                  />
                 </li>
               ))
               }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+import RenderBook from './RenderBook';   // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 
@@ -28,12 +29,9 @@ class ListBooks extends Component {
               <ul className='book-list'>
                 {books.filter((book)=>(book.shelf===shelf)).map((book)=>(
                   <li key={book.id} className='book'>
-                    <div className="book-cover"
-                      style={{
-                        backgroundImage: `url(${book.imageLinks.smallThumbnail})`
-                      }} />
-                    <p className='book-title'> {book.title}</p>
-                    <p className='book-authors'> {book.authors}</p>
+                    <RenderBook
+                      book={book}
+                    />
                   </li>
                 ))
                 }
