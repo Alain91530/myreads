@@ -25,6 +25,7 @@ body {
 
 .book-authors{
   color: grey;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -48,7 +49,7 @@ body {
 }
 
 .search-book{
-  background-image: url("./icons/plus1.png");
+  background-image: url("./icons/plus.png");
   background-repeat: no-repeat;
   background-size: 50px;
   color: white;
@@ -59,9 +60,17 @@ body {
   left: 90%;
   bottom: 5vh;
   width: 50px;
-
 }
 
+.search-books, .search-books-top{
+  margin: 10px;
+}
+
+.search-results{
+  font-style: italic;
+  line-height: 2em;
+  text-align: center;
+}
 .shelf{
   display: flex;
   flex-flow: wrap;

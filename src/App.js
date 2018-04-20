@@ -41,9 +41,10 @@ class App extends Component {
             >Search book</Link>
           </div>
         )}/>
-        <Route path='/search' render={({ history }) => (
+        <Route path='/search' render={() => (
           <SearchBooks />
-        )} />
+        )}
+        />
       </div>
     );
   }
