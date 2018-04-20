@@ -76,7 +76,7 @@ class SearchBooks extends Component {
           </div>
         )}
         {/* If the search return an empty array a warnig telling it*/}
-        {searchedBooks.length===0 && (
+        {(searchedBooks.length===0) && (
           <div className="search-results">
             {`No match found for "${query}"`}</div>
         )}

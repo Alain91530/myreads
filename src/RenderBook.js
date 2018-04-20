@@ -12,13 +12,22 @@ class RenderBook extends Component {
     const book=this.props.book;
 
     return(
-      <div>
+      <div className="book-container">
         <div className="book-cover"
           style={{
             backgroundImage: `url(${book.imageLinks.thumbnail})`
           }} />
         <p className='book-title'> {book.title}</p>
         <p className='book-authors'> {book.authors}</p>
+        <div className="book-shelf-changer">
+          <select>
+            <option value="none" disabled>Move to...</option>
+            <option value="currentlyReading">Currently Reading</option>
+            <option value="wantToRead">Want to Read</option>
+            <option value="read">Read</option>
+            <option value="none">None</option>
+          </select>
+        </div>
       </div>
     );
   }

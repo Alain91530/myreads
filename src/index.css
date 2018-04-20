@@ -20,6 +20,7 @@ body {
   justify-content: center;
   list-style-type: none;
   font-size: 0.7em;
+  padding: 0;
   width: 100%;
 }
 
@@ -28,11 +29,19 @@ body {
   margin-top: 0;
   text-align: center;
 }
+.book-container{
+  text-align: center;
+  border: 1px;
+  border-color: grey;
+  border-style: solid;
+  margin-top: 2vw;
+  padding: 2vw;
+}
 
 .book-cover{
   background-size: contain;
   background-repeat: no-repeat;
-  height: 170px;
+  height: 188px;
   margin: auto;
   text-align: center;
   width:128px;
