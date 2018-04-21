@@ -7,6 +7,12 @@ class RenderBook extends Component {
     book: PropTypes.object.isRequired
   }
 
+  updateShelf(event) {
+    console.log(event, document.activeElement)
+    console.log(this.props.book.shelf)
+    this.props.book.shelf=event
+  }
+
   render() {
 
     const book=this.props.book;
@@ -19,15 +25,18 @@ class RenderBook extends Component {
           }} />
         <p className='book-title'> {book.title}</p>
         <p className='book-authors'> {book.authors}</p>
-        <div className="book-shelf-changer">
-          <select>
-            <option value="none" disabled>Move to...</option>
-            <option value="currentlyReading">Currently Reading</option>
-            <option value="wantToRead">Want to Read</option>
-            <option value="read">Read</option>
-            <option value="none">None</option>
-          </select>
-        </div>
+        <select
+          name= {`${book.id}`}
+          className="book-shelf-changer"
+          onChange={(event) => this.updateShelf(event.target.value)}
+          value={book.shelf}
+        >
+          <option value="none" disabled>Move to...</option>
+          <option className="shelf-choice" value="currentlyReading">Currently Reading</option>
+          <option className="shelf-choice" value="wantToRead">Want to Read</option>
+          <option className="shelf-choice"  value="read">Read</option>
+          <option className="shelf-choice" value="none">None</option>
+        </select>
       </div>
     );
   }

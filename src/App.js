@@ -22,7 +22,9 @@ class App extends Component {
   }
 
   render() {
-    const shelves = ['currentlyReading','wantToRead','read'];
+    const shelves = [{ currentlyReading:'Currently reading'},
+      {wantToRead: 'Want to read'},
+      {read: 'Read'}];
     /* call ListBooks component to display the books.                         */
     return (
       <div>
@@ -34,7 +36,7 @@ class App extends Component {
             <ListBooks
               books={this.state.books}
               shelves={shelves}
-            />
+            />        
             <Link
               to='/search'
               className="search-book">

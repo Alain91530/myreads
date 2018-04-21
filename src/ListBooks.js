@@ -24,10 +24,13 @@ class ListBooks extends Component {
       <div>
         <div className='shelves'>
           {shelves.map((shelf) => (
-            <div key={shelf} className='shelf'>
-              <h2 className='shelf-title'>{shelf}</h2>
+            <div key={Object.keys(shelf)} className='shelf'>
+              <h2 className='shelf-title'>
+                {shelf[Object.keys(shelf).toString()]}
+              </h2>
               <ul className='book-list'>
-                {books.filter((book)=>(book.shelf===shelf)).map((book)=>(
+                {books.filter((book)=>(
+                  book.shelf===(Object.keys(shelf).toString()))).map((book)=>(
                   <li key={book.id} className='book'>
                     <RenderBook
                       book={book}
