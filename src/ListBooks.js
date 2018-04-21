@@ -17,13 +17,13 @@ class ListBooks extends Component {
   };
 
   updateShelf(event) {
-    console.log(event, document.activeElement);
+    const bookId=document.activeElement.name;
+    const books=this.state.books
+    let bookMoved=books.filter((book) => (book.id===bookId))
+    books[books.indexOf(bookMoved[0])].shelf=event
+    this.setState(books: books)
   }
 
-  /*componentDidMount() {
-    this.setState({books: this.props.books})
-    console.log(this.state.books)
-  }*/
   componentDidMount() {
     getAll().then((books) => {
       this.setState({ books });
