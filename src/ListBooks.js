@@ -2,20 +2,39 @@ import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import RenderBook from './RenderBook';   // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
+import {getAll} from './BooksAPI';
+
 
 /* Enforce type of props                                                      */
 
 class ListBooks extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired,
     shelves: PropTypes.array.isRequired
+  }
+
+  state = {
+    books: []
+  };
+
+  updateShelf(event) {
+    console.log(event, document.activeElement);
+  }
+
+  /*componentDidMount() {
+    this.setState({books: this.props.books})
+    console.log(this.state.books)
+  }*/
+  componentDidMount() {
+    getAll().then((books) => {
+      this.setState({ books });
+    });
   }
 
   /* Render the shelves                                                       */
 
   render() {
     /* const just for convenience                                             */
-    const books = this.props.books;
+    const books = this.state.books;
     const shelves = this.props.shelves;
     /* Sort books just cause it's nicer                                       */
     books.sort(sortBy('title'));
@@ -29,12 +48,26 @@ class ListBooks extends Component {
                 {shelf[Object.keys(shelf).toString()]}
               </h2>
               <ul className='book-list'>
-                {books.filter((book)=>(
+                {this.state.books.filter((book)=>(
                   book.shelf===(Object.keys(shelf).toString()))).map((book)=>(
                   <li key={book.id} className='book'>
-                    <RenderBook
-                      book={book}
-                    />
+                    <div className="book-container">
+                      <RenderBook
+                        book={book}
+                      />
+                      <select
+                        name= {`${book.id}`}
+                        className="book-shelf-changer"
+                        onChange={(event) => this.updateShelf(event.target.value)}
+                        value={book.shelf}
+                      >
+                        <option value="none" disabled>Move to...</option>
+                        <option className="shelf-choice" value="currentlyReading">Currently Reading</option>
+                        <option className="shelf-choice" value="wantToRead">Want to Read</option>
+                        <option className="shelf-choice"  value="read">Read</option>
+                        <option className="shelf-choice" value="none">None</option>
+                      </select>
+                    </div>
                   </li>
                 ))
                 }

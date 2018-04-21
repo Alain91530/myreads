@@ -9,22 +9,12 @@ import './App.css';
 
 class App extends Component {
 
-  state = {
-    books: []
-  };
-
-  /* Get all books from the data base and update state to have it renderer    */
-
-  componentDidMount() {
-    getAll().then((books) => {
-      this.setState({ books });
-    });
-  }
-
   render() {
+
     const shelves = [{ currentlyReading:'Currently reading'},
       {wantToRead: 'Want to read'},
       {read: 'Read'}];
+
     /* call ListBooks component to display the books.                         */
     return (
       <div>
@@ -34,7 +24,7 @@ class App extends Component {
         <Route exact path='/' render = {() => (
           <div>
             <ListBooks
-              books={this.state.books}
+              /*books={this.state.books} */
               shelves={shelves}
             />        
             <Link
