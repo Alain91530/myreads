@@ -45,6 +45,7 @@
 }
 
 .book-cover{
+  background-image: url('./icons/no_cover.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   height: 188px;

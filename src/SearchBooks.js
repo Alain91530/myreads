@@ -17,27 +17,19 @@ class SearchBooks extends Component {
   }
 
   updateMyBooks(event) {
+    /*
+     * Get Id of the modified book and set some come for convenience
+     */
     const bookId=document.activeElement.name;
-    let books=this.state.searchedBooks;
-    let myNewBooks=this.state.myBooks
-    const test =[]
-    console.log(books,bookId)
+    const books=this.state.searchedBooks;
+
     let bookMoved=books.filter((book) => (book.id===bookId));
-    bookMoved.shelf=event
-    myNewBooks.push(bookMoved)
-    console.log(bookMoved[0])
-    update(bookMoved[0], event)
-      .then(() => {console.log('updated');(getAll()
-        .then((test) => {console.log('got books',test);this.setState({test})})
-        .catch(console.log('error',this.state.myBooks)))})
-      .catch(console.log(books))
-    //bookMoved.shelf = event
-    //myNewBooks.push(bookMoved[0])
-    //console.log(this.state.myBooks.indexOf(bookMoved[0]))
-    //this.state.myBooks[)].shelf=event;
-    //this.setState({myBooks: myNewBooks});
-    console.log(this.state.myBooks)
+    // Update the database then get all books updated and set new state
+    update(bookMoved[0], event).then(() => {(getAll()
+      .then((books) => {this.setState({books});})
+    );});
   }
+  
 
   /*
    * Get all books according to the query from the data base and update state
@@ -46,7 +38,6 @@ class SearchBooks extends Component {
   updateQuery = (query) => {
     let searchResult=[];
     searchResult=[];
-    this.setState({ query: query });
     /*
     * No need to search for books if query is empty (after backspacing or
      * deleting)
@@ -62,6 +53,8 @@ class SearchBooks extends Component {
       });
     }
     this.setState({searchResult});
+    this.setState({ query });
+
   }
 
   checkIfOwned= (book) => {

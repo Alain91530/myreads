@@ -9,13 +9,13 @@ class RenderBook extends Component {
 
   render() {
     const currentBook = this.props.book;
-
+ //   if(!currentBook.hasOwnProperty('imageLinks')) currentBook.imageLinks={thumbnail: './icons/no_cover.jpg'};
     return(
       <div>
-        <div className="book-cover"
-          style={{
-            backgroundImage: `url(${currentBook.imageLinks.thumbnail})`
-          }} />
+        {currentBook.hasOwnProperty('imageLinks')&&(<div className="book-cover"
+          style={{backgroundImage: `url(${currentBook.imageLinks.thumbnail})`
+          }} />)}
+        {!currentBook.hasOwnProperty('imageLinks')&&(<div className="book-cover"/>)}
         <p className='book-title'> {currentBook.title}</p>
         <p className='book-authors'> {currentBook.authors}</p>
       </div>
