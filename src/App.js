@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom'; // eslint-disable-line no-unused-vars
 import { Link } from 'react-router-dom';  // eslint-disable-line no-unused-vars
 import ListBooks from './ListBooks';      // eslint-disable-line no-unused-vars
 import SearchBooks from './SearchBooks';  // eslint-disable-line no-unused-vars
-import {getAll} from './BooksAPI';
 import './App.css';
 
 
@@ -34,7 +33,7 @@ class App extends Component {
           </div>
         )}/>
         <Route path='/search' render={() => (
-          <SearchBooks />
+          <SearchBooks/>
         )}
         />
       </div>

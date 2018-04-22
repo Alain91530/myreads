@@ -1,16 +1,24 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import RenderBook from './RenderBook';    // eslint-disable-line no-unused-vars
-import {search} from './BooksAPI';
+import {search, getAll} from './BooksAPI';
 
 class SearchBooks extends Component {
   state = {
     searchedBooks: [],
+    myBooks:[],
     query: ''
   };
+
   /*
    * Get all books according to the query from the data base and update state
    *   to have it rendered
    */
+
+  componentDidMount() {
+    getAll().then((myBooks) => {
+      this.setState({ myBooks });
+    });
+  }
 
   updateQuery = (query) => {
     let searchResult=[];
@@ -33,9 +41,20 @@ class SearchBooks extends Component {
     this.setState({searchResult});
   }
 
+  checkIfOwned= (book) => {
+    let ownedBook = book;
+    let foundBook = this.state.myBooks.filter((myBook) => (book.id===myBook.id))[0];
+    ownedBook.shelf = 'none';
+    if (foundBook) ownedBook = foundBook;
+    return(ownedBook);
+  }
+
   render() {
     const query = this.state.query;
-    const searchedBooks= this.state.searchedBooks;
+    let searchedBooks= this.state.searchedBooks;
+    searchedBooks=searchedBooks.map((book)=>(
+      this.checkIfOwned(book)));
+
     return (
       <div>
         {/*Render the search area of the search page*/}
@@ -73,6 +92,7 @@ class SearchBooks extends Component {
               ))
               }
             </ul>
+            {/*console.log(searchedBooks)*/}
           </div>
         )}
         {/* If the search return an empty array a warnig telling it*/}

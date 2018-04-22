@@ -18,10 +18,10 @@ class ListBooks extends Component {
 
   updateShelf(event) {
     const bookId=document.activeElement.name;
-    const books=this.state.books
-    let bookMoved=books.filter((book) => (book.id===bookId))
-    books[books.indexOf(bookMoved[0])].shelf=event
-    this.setState(books: books)
+    const books=this.state.books;
+    let bookMoved=books.filter((book) => (book.id===bookId));
+    books[books.indexOf(bookMoved[0])].shelf=event;
+    this.setState(books: books);
   }
 
   componentDidMount() {
@@ -62,7 +62,7 @@ class ListBooks extends Component {
                         value={book.shelf}
                       >
                         <option value="none" disabled>Move to...</option>
-                        <option className="shelf-choice" value="currentlyReading">Currently Reading</option>
+                        <option className="shelf-choice" value="currentlyReading" label='Currently reading'/>
                         <option className="shelf-choice" value="wantToRead">Want to Read</option>
                         <option className="shelf-choice"  value="read">Read</option>
                         <option className="shelf-choice" value="none">None</option>
