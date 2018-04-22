@@ -48,10 +48,10 @@
   background-image: url('./icons/no_cover.jpg');
   background-size: contain;
   background-repeat: no-repeat;
-  height: 188px;
+  height: 20vw;
   margin: auto;
   text-align: center;
-  width:128px;
+  width:15vw;
 }
 
 .book-shelf-changer {

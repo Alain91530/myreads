@@ -2,7 +2,7 @@ import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import RenderBook from './RenderBook';   // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
-import {getAll} from './BooksAPI';
+import {getAll, update} from './BooksAPI';
 
 
 /* Enforce type of props                                                      */
@@ -21,8 +21,12 @@ class ListBooks extends Component {
     const books=this.state.books;
     let bookMoved=books.filter((book) => (book.id===bookId));
     books[books.indexOf(bookMoved[0])].shelf=event;
+    update(bookMoved[0], event).then(() => {(getAll()
+      .then((books) => {this.setState({books});})
+    );});
+  
     this.setState(books: books);
-  }
+}
 
   componentDidMount() {
     getAll().then((books) => {
