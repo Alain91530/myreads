@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import {getAll, update} from './BooksAPI';
 
-
 /* Enforce type of props                                                      */
 
 class ListBooks extends Component {
@@ -16,17 +15,19 @@ class ListBooks extends Component {
     books: []
   };
 
-  updateShelf(event) {
+  updateShelf = (event) => {
     const bookId=document.activeElement.name;
     const books=this.state.books;
+
     let bookMoved=books.filter((book) => (book.id===bookId));
     books[books.indexOf(bookMoved[0])].shelf=event;
+
     update(bookMoved[0], event).then(() => {(getAll()
       .then((books) => {this.setState({books});})
     );});
   
     this.setState(books: books);
-}
+  }
 
   componentDidMount() {
     getAll().then((books) => {
@@ -55,23 +56,10 @@ class ListBooks extends Component {
                 {this.state.books.filter((book)=>(
                   book.shelf===(Object.keys(shelf).toString()))).map((book)=>(
                   <li key={book.id} className='book'>
-                    <div className="book-container">
                       <RenderBook
                         book={book}
+                        updateBook = {this.updateShelf}
                       />
-                      <select
-                        name= {`${book.id}`}
-                        className="book-shelf-changer"
-                        onChange={(event) => this.updateShelf(event.target.value)}
-                        value={book.shelf}
-                      >
-                        <option value="none" disabled>Move to...</option>
-                        <option className="shelf-choice" value="currentlyReading" label='Currently reading'/>
-                        <option className="shelf-choice" value="wantToRead">Want to Read</option>
-                        <option className="shelf-choice"  value="read">Read</option>
-                        <option className="shelf-choice" value="none">None</option>
-                      </select>
-                    </div>
                   </li>
                 ))
                 }

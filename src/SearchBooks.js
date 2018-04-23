@@ -18,7 +18,7 @@ class SearchBooks extends Component {
     });
   }
 
-  updateMyBooks(event) {
+  updateMyBooks = (event) => {
     /*
      * Get Id of the modified book and set some come for convenience
      */
@@ -26,6 +26,9 @@ class SearchBooks extends Component {
     const books=this.state.searchedBooks;
 
     let bookMoved=books.filter((book) => (book.id===bookId));
+    // bookMoved can't be empty and has only 1 element, it's the modified book
+    books[books.indexOf(bookMoved[0])].shelf=event;
+
     // Update the database then get all books updated and set new state
     update(bookMoved[0], event).then(() => {(getAll()
       .then((books) => {this.setState({books});})
@@ -108,19 +111,9 @@ class SearchBooks extends Component {
 
                     <RenderBook
                       book={book}
+                      updateBook = {this.updateMyBooks}
                     />
-                    <select
-                      name= {`${book.id}`}
-                      className="book-shelf-changer"
-                      onChange={(event) => this.updateMyBooks(event.target.value)}
-                      value={book.shelf}
-                    >
-                      <option value="test" disabled>Move to...</option>
-                      <option className="shelf-choice" value="currentlyReading" label='Currently reading'/>
-                      <option className="shelf-choice" value="wantToRead">Want to Read</option>
-                      <option className="shelf-choice"  value="read">Read</option>
-                      <option className="shelf-choice" value="none">None</option>
-                    </select>
+
                   </div>
 
                 </li>
