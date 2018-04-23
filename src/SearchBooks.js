@@ -33,7 +33,7 @@ class SearchBooks extends Component {
 
     // Update the database then get all books updated and set new state
     update(bookMoved[0], event).then(() => {(getAll()
-      .then((books) => {console.log(books);this.setState({myBooks: books});})
+      .then((books) => {this.setState({myBooks: books});})
     );});
   }
   
@@ -49,37 +49,51 @@ class SearchBooks extends Component {
      */
     if (query) 
       search(query).then(( searchedBooks ) =>
+      // Update the query
       {this.setState({ query });
         // Search the query and update the component's state with the results
         (searchedBooks.length) ? this.setState({searchedBooks}) : this.setState({searchedBooks: []});
       });
     else {
+      // Update the state with the query to allow it comming back to ""
       this.setState({ query });
-
+      // Update the books with an empty array
       this.setState({searchedBooks: []});}
-    // Update the state with the query
 
   }
+  /*
+   * Function used to check the owned book in the search result. Used to be able to
+   * highligth the proper option in the select to change a book of shelf.
+   * 
+   * For all owned book check if the book passed as parameter is the same
+   * If not we return the book with a none shelf otherwise the shelf where it's stored
+   * The check is made upon the Id which is unique
+   */
 
   checkIfOwned= (book) => {
-    console.log('checking',this.state.myBooks.length)
+
+    // Prepare a default book to return
     let ownedBook = book;
-    let foundBook = this.state.myBooks.filter((myBook) => (book.id===myBook.id))[0];
     ownedBook.shelf = 'none';
-    if (foundBook) {console.log(foundBook);ownedBook = foundBook};
+
+    let foundBook = this.state.myBooks.filter((myBook) => (book.id===myBook.id))[0];
+    // If a book was found foundBook is truthy and we return it 
+    if (foundBook) {ownedBook = foundBook;}
     return(ownedBook);
   }
 
   render() {
     const query = this.state.query;
     let searchedBooks= this.state.searchedBooks;
+
+    // Search if any owned books in the search result and update the result with the right shelf
     searchedBooks=searchedBooks.map((book)=>(
       this.checkIfOwned(book)));
-    console.log('rendering')
 
     return (
       <div>
         {/*Render the search area of the search page*/}
+        {/*A header with text input for the query and a link to the main page back*/}
         <div  className='search-books-top'>
           <h3>Search for new books:</h3>
           <input
@@ -94,15 +108,12 @@ class SearchBooks extends Component {
             className="back-home"
           >Back to My reads</Link>
         </div>
-        <div>
-
-        </div>
-
 
         {/*
           * Now render the results:
           * First the number of results returned
           */}
+
         {searchedBooks.length!==0 && (
           <div>
             <p className="search-results">
@@ -119,26 +130,28 @@ class SearchBooks extends Component {
                       book={book}
                       updateBook = {this.updateMyBooks}
                     />
-
                   </div>
-
                 </li>
               ))
               }
             </ul>
+
+            {/* Add another link at the bottom of the page to scrolling up to go back*/}
             <Link
               to='/'
               className="back-home"
             >Back to My reads</Link>
-            {/*console.log(searchedBooks)*/}
           </div>
         )}
-        {/* If the search return an empty array a warnig telling it*/}
+
+        {/* If the search returned an empty array a warning telling it*/}
         {((searchedBooks.length===0)&&(query.length!==0)) && (
           <div className="search-results">
             {`No match found for "${query}"`}</div>
         )}
 
+        {/* Just nothing if the query is empty*/}
+        
       </div>
 
     );

@@ -5,10 +5,9 @@ import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import {getAll, update} from './BooksAPI';
 
-/* Enforce type of props                                                      */
-
 class ListMyBooks extends Component {
 
+/* Enforce type of props                                                      */
   static propTypes = {
     shelves: PropTypes.array.isRequired
   }
@@ -16,7 +15,9 @@ class ListMyBooks extends Component {
   state = {
     books: []
   };
-
+/*
+ * Callback function for the event triggered when a book change of shef
+ */
   updateShelf = (event) => {
     const bookId=document.activeElement.name;
     const books=this.state.books;
@@ -27,10 +28,13 @@ class ListMyBooks extends Component {
     update(bookMoved[0], event).then(() => {(getAll()
       .then((books) => {this.setState({books});})
     );});
-  
+    /*
+     * Not totally necessary but used to force rerender before the database update
+     * to have a more reactive app
+     */
     this.setState({books: books});
   }
-
+  /* Get the books and set the state when component has mount                 */
   componentDidMount() {
     getAll().then((books) => {
       this.setState({ books });
@@ -38,32 +42,33 @@ class ListMyBooks extends Component {
   }
 
   /* Render the shelves                                                       */
-
   render() {
     /* const just for convenience                                             */
     const books = this.state.books;
     const shelves = this.props.shelves;
     /* Sort books just cause it's nicer                                       */
     books.sort(sortBy('title'));
-    /* Construct the DOM looping on shelves and on books inside a shelf       */
+
+    /* Construct the DOM looping on shelves                                   */
     return (
       
-        <div className='shelves'>
-          {shelves.map((shelf) => (
-            <div key={Object.keys(shelf)} className='shelf'>
-              <h2 className='shelf-title'>
-                {shelf[Object.keys(shelf).toString()]}
-              </h2>
-              <ListBooks
-                books={this.state.books.filter((book)=>
-                  (book.shelf===(Object.keys(shelf).toString())))
-                }
-                shelf={shelf}
-                updateBook= {this.updateShelf}/>
-            </div>
-          ))}
-        </div>
-      );
+      <div className='shelves'>
+        {shelves.map((shelf) => (
+          <div key={Object.keys(shelf)} className='shelf'>
+            <h2 className='shelf-title'>
+              {shelf[Object.keys(shelf).toString()]}
+            </h2>
+            {/* List the books on each shelf and pass the call back function*/}
+            <ListBooks
+              books={this.state.books.filter((book)=>
+                (book.shelf===(Object.keys(shelf).toString())))
+              }
+              shelf={shelf}
+              updateBook= {this.updateShelf}/>
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 

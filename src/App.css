@@ -15,6 +15,7 @@
   font-size: 1.5em;
 }
 
+/* Link back to home page */
 .back-home{
   background-image: url("./icons/arrow-back.svg");
   background-color: lightblue;
@@ -31,6 +32,7 @@
   border-radius: 30px;
 }
 
+/* Style of books */
 .book{
   display: flex;
   flex-flow: wrap;
@@ -39,29 +41,21 @@
   width: 25%;
 }
 
-.book-list{
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-around;
-  list-style-type: none;
-  font-size: 0.7em;
-  padding: 0;
-  width: 100%;
-}
-
 .book-authors{
   color: grey;
   margin-top: 0;
   text-align: center;
 }
+
 .book-container{
-  position: relative;
-  text-align: center;
   margin-top: 2vw;
   padding: 2vw;
+  position: relative;
+  text-align: center;
 }
 
 .book-cover{
+  /* Default background in case there is no cover pic in the database */
   background-image: url('./icons/no_cover.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -70,29 +64,27 @@
   width:15vw;
 }
 
-.book-shelf-changer {
-  
-  -webkit-appearance: none;
-  position: absolute;
-  right: 0px;
-  bottom: 80px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.book-shelf-changer {  
   background: rgb(0, 174, 255);
+  background-position: center;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
-  background-position: center;
   background-size: 30px;
+  border-radius: 50%;
+  bottom: 80px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  height: 40px;
+  position: absolute;
+  right: -13px;
+  width: 40px;
 }
 
 .book-shelf-changer select{
   background: rgb(0, 174, 255);
-  width: 100%;
+  cursor: pointer;
   height: 100%;
   opacity: 0;
-  cursor: pointer;
+  width: 100%;
 }
 
 .book-title{
@@ -101,6 +93,7 @@
   width: 100%;
 }
 
+/* Link to the search page  */
 .search-book{
   background-image: url("./icons/plus.png");
   background-repeat: no-repeat;
@@ -115,6 +108,7 @@
   width: 50px;
 }
 
+/* Style for the search book page */
 .search-books, .search-books-top{
   margin: 10px;
 }
@@ -132,11 +126,13 @@
   text-align: center;
 }
 
+/* Styling of the sheves  */
 .shelf{
   display: flex;
   flex-flow: wrap;
   justify-content: space-around;
 }
+
 .shelf-title{
   border-bottom: 1px;
   border-bottom-style: solid;
@@ -145,7 +141,19 @@
   padding-left: 10px;
   text-align: left;
   width: 100%;
+
 }
 .shelves{
   padding: 10px;
+}
+
+/* Styling of a book list in sheves or in the search page */
+.book-list{
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  list-style-type: none;
+  font-size: 0.7em;
+  padding: 0;
+  width: 100%;
 }

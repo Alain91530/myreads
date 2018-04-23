@@ -1,7 +1,10 @@
+
+// Import required files
+
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import { Route } from 'react-router-dom'; // eslint-disable-line no-unused-vars
 import { Link } from 'react-router-dom';  // eslint-disable-line no-unused-vars
-import ListMyBooks from './ListMyBooks';      // eslint-disable-line no-unused-vars
+import ListMyBooks from './ListMyBooks';  // eslint-disable-line no-unused-vars
 import SearchBooks from './SearchBooks';  // eslint-disable-line no-unused-vars
 import './App.css';
 
@@ -12,9 +15,14 @@ class App extends Component {
 
     const shelves = [{ currentlyReading:'Currently reading'},
       {wantToRead: 'Want to read'},
-      {read: 'Read'}];
+      {read: 'Read'}
+    ];
 
-    /* call ListBooks component to display the books.                         */
+    /*
+     * Set the header of the app and then
+     * - Call ListBooks component to display the books if at the home page.      
+     * - Or call SearchIBooks for the search page
+     */
     return (
       <div>
         <header className="App-header">
@@ -23,7 +31,6 @@ class App extends Component {
         <Route exact path='/' render = {() => (
           <div>
             <ListMyBooks
-              /*books={this.state.books} */
               shelves={shelves}
             />        
             <Link
