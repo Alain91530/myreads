@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import { Route } from 'react-router-dom'; // eslint-disable-line no-unused-vars
 import { Link } from 'react-router-dom';  // eslint-disable-line no-unused-vars
-import ListBooks from './ListBooks';      // eslint-disable-line no-unused-vars
+import ListMyBooks from './ListMyBooks';      // eslint-disable-line no-unused-vars
 import SearchBooks from './SearchBooks';  // eslint-disable-line no-unused-vars
 import './App.css';
 
@@ -22,7 +22,7 @@ class App extends Component {
         </header>
         <Route exact path='/' render = {() => (
           <div>
-            <ListBooks
+            <ListMyBooks
               /*books={this.state.books} */
               shelves={shelves}
             />        

@@ -17,6 +17,9 @@ class SearchBooks extends Component {
       this.setState({ myBooks });
     });
   }
+  /*
+   * Arrow function for the callback to avoid binding when invoking it
+   */
 
   updateMyBooks = (event) => {
     /*
@@ -78,6 +81,10 @@ class SearchBooks extends Component {
         {/*Render the search area of the search page*/}
         <div  className='search-books-top'>
           <h3>Search for new books:</h3>
+          <Link
+          to='/'
+          className="back-home"
+        >Back to My reads</Link>
         </div>
         <div>
           <input
@@ -88,10 +95,7 @@ class SearchBooks extends Component {
             onChange={(event) => this.updateQuery(event.target.value, searchedBooks)}
           />
         </div>
-        <Link
-          to='/'
-          className="back-home"
-        >Back to My reads</Link>
+
 
         {/*
           * Now render the results:
