@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import {getAll, update} from './BooksAPI';
 
-
 /* Enforce type of props                                                      */
 
 class ListBooks extends Component {
@@ -57,13 +56,10 @@ class ListBooks extends Component {
                 {this.state.books.filter((book)=>(
                   book.shelf===(Object.keys(shelf).toString()))).map((book)=>(
                   <li key={book.id} className='book'>
-                    <div className="book-container">
                       <RenderBook
                         book={book}
                         updateBook = {this.updateShelf}
                       />
-
-                    </div>
                   </li>
                 ))
                 }

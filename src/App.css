@@ -39,7 +39,7 @@
 .book-list{
   display: flex;
   flex-flow: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   list-style-type: none;
   font-size: 0.7em;
   padding: 0;
@@ -54,20 +54,16 @@
 .book-container{
   position: relative;
   text-align: center;
-  border: 1px;
- /* border-color: grey;
-  border-style: solid;*/
   margin-top: 2vw;
   padding: 2vw;
 }
 
 .book-cover{
   background-image: url('./icons/no_cover.jpg');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 20vw;
   margin: auto;
-  text-align: center;
   width:15vw;
 }
 
