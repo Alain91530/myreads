@@ -26,15 +26,14 @@ class SearchBooks extends Component {
      * Get Id of the modified book and set some come for convenience
      */
     const bookId=document.activeElement.name;
-    const books=this.state.searchedBooks;
+    const searchedBooks=this.state.searchedBooks;
 
-    let bookMoved=books.filter((book) => (book.id===bookId));
+    let bookMoved=searchedBooks.filter((book) => (book.id===bookId));
     // bookMoved can't be empty and has only 1 element, it's the modified book
-    books[books.indexOf(bookMoved[0])].shelf=event;
 
     // Update the database then get all books updated and set new state
     update(bookMoved[0], event).then(() => {(getAll()
-      .then((books) => {this.setState({books});})
+      .then((books) => {console.log(books);this.setState({myBooks: books});})
     );});
   }
   
@@ -63,10 +62,11 @@ class SearchBooks extends Component {
   }
 
   checkIfOwned= (book) => {
+    console.log('checking',this.state.myBooks.length)
     let ownedBook = book;
     let foundBook = this.state.myBooks.filter((myBook) => (book.id===myBook.id))[0];
     ownedBook.shelf = 'none';
-    if (foundBook) ownedBook = foundBook;
+    if (foundBook) {console.log(foundBook);ownedBook = foundBook};
     return(ownedBook);
   }
 
@@ -75,7 +75,7 @@ class SearchBooks extends Component {
     let searchedBooks= this.state.searchedBooks;
     searchedBooks=searchedBooks.map((book)=>(
       this.checkIfOwned(book)));
-    console.log(query,query.length)
+    console.log('rendering')
 
     return (
       <div>

@@ -34,7 +34,7 @@
 .book{
   display: flex;
   flex-flow: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-left: 0;
   width: 25%;
 }

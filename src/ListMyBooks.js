@@ -8,9 +8,9 @@ import {getAll, update} from './BooksAPI';
 /* Enforce type of props                                                      */
 
 class ListMyBooks extends Component {
+
   static propTypes = {
     shelves: PropTypes.array.isRequired
-
   }
 
   state = {
@@ -47,7 +47,7 @@ class ListMyBooks extends Component {
     books.sort(sortBy('title'));
     /* Construct the DOM looping on shelves and on books inside a shelf       */
     return (
-      <div>
+      
         <div className='shelves'>
           {shelves.map((shelf) => (
             <div key={Object.keys(shelf)} className='shelf'>
@@ -63,7 +63,7 @@ class ListMyBooks extends Component {
             </div>
           ))}
         </div>
-      </div>);
+      );
   }
 }
 
