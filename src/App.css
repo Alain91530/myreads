@@ -4,6 +4,8 @@
 
 .App-header {
   background-color: blue;
+  position: sticky;
+  top: 0;
   padding: 20px;
   color: white;
   z-index: 999;
@@ -15,7 +17,7 @@
 
 .back-home{
   background-image: url("./icons/arrow-back.svg");
-  background-color: white;
+  background-color: lightblue;
   background-repeat: no-repeat;
   background-size: 50px;
   color: white;
@@ -26,6 +28,7 @@
   left: 90%;
   top: 5vh;
   width: 50px;
+  border-radius: 30px;
 }
 
 .book{
@@ -68,14 +71,15 @@
 }
 
 .book-shelf-changer {
-  color: aquamarine;
+  
+  -webkit-appearance: none;
   position: absolute;
   right: 0px;
   bottom: 80px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: blue;
+  background: rgb(0, 174, 255);
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -83,8 +87,8 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
-.book-shelf-changer select {
-  font-size: 1em;
+.book-shelf-changer select{
+  background: rgb(0, 174, 255);
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -95,10 +99,6 @@
   font-weight: bold;
   text-align: center;
   width: 100%;
-}
-.App-header{
-  position: sticky;
-  top: 0;
 }
 
 .search-book{
@@ -120,6 +120,8 @@
 }
 
 .search-books-top{
+  border-bottom-style: solid;
+  border-color: grey;
   display: flex;
   flex-flow: wrap;
 }
@@ -133,6 +135,7 @@
 .shelf{
   display: flex;
   flex-flow: wrap;
+  justify-content: space-around;
 }
 .shelf-title{
   border-bottom: 1px;

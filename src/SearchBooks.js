@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import RenderBook from './RenderBook';    // eslint-disable-line no-unused-vars
 import { Link } from 'react-router-dom';  // eslint-disable-line no-unused-vars
-
+import ListBooks from './ListBooks';      // eslint-disable-line no-unused-vars
 import {search, getAll, update} from './BooksAPI';
 
 class SearchBooks extends Component {
@@ -48,16 +48,17 @@ class SearchBooks extends Component {
     * No need to search for books if query is empty (after backspacing or
      * deleting), but we need to set the new state
      */
-    (query) 
-      ? search(query).then(( searchedBooks ) =>
-      {
+    if (query) 
+      search(query).then(( searchedBooks ) =>
+      {this.setState({ query });
         // Search the query and update the component's state with the results
         (searchedBooks.length) ? this.setState({searchedBooks}) : this.setState({searchedBooks: []});
-      })
-      :
-      this.setState({searchedBooks: []});
+      });
+    else {
+      this.setState({ query });
+
+      this.setState({searchedBooks: []});}
     // Update the state with the query
-    this.setState({ query });
 
   }
 
@@ -70,30 +71,31 @@ class SearchBooks extends Component {
   }
 
   render() {
-    
     const query = this.state.query;
     let searchedBooks= this.state.searchedBooks;
     searchedBooks=searchedBooks.map((book)=>(
       this.checkIfOwned(book)));
+    console.log(query,query.length)
 
     return (
       <div>
         {/*Render the search area of the search page*/}
         <div  className='search-books-top'>
           <h3>Search for new books:</h3>
-          <Link
-          to='/'
-          className="back-home"
-        >Back to My reads</Link>
-        </div>
-        <div>
           <input
             className='search-books'
             type='text'
-            placeholder='Search books'
+            placeholder='Search for author, title, etc...'
             value={query}
             onChange={(event) => this.updateQuery(event.target.value, searchedBooks)}
           />
+          <Link
+            to='/'
+            className="back-home"
+          >Back to My reads</Link>
+        </div>
+        <div>
+
         </div>
 
 
@@ -104,7 +106,7 @@ class SearchBooks extends Component {
         {searchedBooks.length!==0 && (
           <div>
             <p className="search-results">
-              {`Your search for" ${(query)} returned ${(searchedBooks.length)} result(s)`}
+              {`Your search for "${(query)}" returned ${(searchedBooks.length)} result(s)`}
             </p>
 
             {/* Then the grid of books returned*/}
@@ -132,7 +134,7 @@ class SearchBooks extends Component {
           </div>
         )}
         {/* If the search return an empty array a warnig telling it*/}
-        {(searchedBooks.length===0) && (
+        {((searchedBooks.length===0)&&(query.length!==0)) && (
           <div className="search-results">
             {`No match found for "${query}"`}</div>
         )}
