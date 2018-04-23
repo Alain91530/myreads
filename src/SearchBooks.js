@@ -1,5 +1,7 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import RenderBook from './RenderBook';    // eslint-disable-line no-unused-vars
+import { Link } from 'react-router-dom';  // eslint-disable-line no-unused-vars
+
 import {search, getAll, update} from './BooksAPI';
 
 class SearchBooks extends Component {
@@ -36,23 +38,19 @@ class SearchBooks extends Component {
    *   to have it rendered
    */
   updateQuery = (query) => {
-    let searchResult=[];
-    searchResult=[];
     /*
     * No need to search for books if query is empty (after backspacing or
-     * deleting)
+     * deleting), but we need to set the new state
      */
-    if (query) {
-      search(query).then(( searchedBooks ) => {
-        if(searchedBooks.length) {
-          this.setState({searchedBooks});
-        }
-        else {
-          this.setState({searchedBooks: []});
-        }
-      });
-    }
-    this.setState({searchResult});
+    (query) 
+      ? search(query).then(( searchedBooks ) =>
+      {
+        // Search the query and update the component's state with the results
+        (searchedBooks.length) ? this.setState({searchedBooks}) : this.setState({searchedBooks: []});
+      })
+      :
+      this.setState({searchedBooks: []});
+    // Update the state with the query
     this.setState({ query });
 
   }
@@ -66,11 +64,11 @@ class SearchBooks extends Component {
   }
 
   render() {
+    
     const query = this.state.query;
     let searchedBooks= this.state.searchedBooks;
     searchedBooks=searchedBooks.map((book)=>(
       this.checkIfOwned(book)));
-    console.log('render:',this.state.myBooks)
 
     return (
       <div>
@@ -87,6 +85,10 @@ class SearchBooks extends Component {
             onChange={(event) => this.updateQuery(event.target.value, searchedBooks)}
           />
         </div>
+        <Link
+          to='/'
+          className="back-home"
+        >Back to My reads</Link>
 
         {/*
           * Now render the results:
@@ -107,8 +109,6 @@ class SearchBooks extends Component {
                     <RenderBook
                       book={book}
                     />
-                    {console.log(book.shelf)}
-
                     <select
                       name= {`${book.id}`}
                       className="book-shelf-changer"
@@ -127,6 +127,10 @@ class SearchBooks extends Component {
               ))
               }
             </ul>
+            <Link
+              to='/'
+              className="back-home"
+            >Back to My reads</Link>
             {/*console.log(searchedBooks)*/}
           </div>
         )}
@@ -135,6 +139,7 @@ class SearchBooks extends Component {
           <div className="search-results">
             {`No match found for "${query}"`}</div>
         )}
+
       </div>
 
     );

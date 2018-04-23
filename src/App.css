@@ -12,17 +12,34 @@
 .App-title {
   font-size: 1.5em;
 }
+
+.back-home{
+  background-image: url("./icons/arrow-back.svg");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 50px;
+  color: white;
+  display: block;
+  font-size: 0;
+  height: 50px;
+  position: sticky;
+  left: 90%;
+  top: 5vh;
+  width: 50px;
+}
+
 .book{
   display: flex;
   flex-flow: wrap;
-  justify-content: center;
+  justify-content: space-between;
   margin-left: 0;
   width: 25%;
 }
+
 .book-list{
   display: flex;
   flex-flow: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   list-style-type: none;
   font-size: 0.7em;
   padding: 0;
@@ -38,8 +55,8 @@
   position: relative;
   text-align: center;
   border: 1px;
-  border-color: grey;
-  border-style: solid;
+ /* border-color: grey;
+  border-style: solid;*/
   margin-top: 2vw;
   padding: 2vw;
 }
