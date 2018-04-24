@@ -15,9 +15,9 @@ class ListMyBooks extends Component {
   state = {
     books: []
   };
-/*
- * Callback function for the event triggered when a book change of shef
- */
+  /*
+  * Callback function for the event triggered when a book change of shef
+  */
   updateShelf = (event) => {
     const bookId=document.activeElement.name;
     const books=this.state.books;

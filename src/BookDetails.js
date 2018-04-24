@@ -19,22 +19,38 @@ componentDidMount() {
 render() {
 
   const book = this.state.book;
-  /* Intialise to warn user is info is not available */
+  /* Intialise to warn user is some info is not available */
   if (!(book.hasOwnProperty('authors'))) book.authors = 'Not available';
   if (!(book.hasOwnProperty('description'))) book.description = 'Not available';
   if (!(book.hasOwnProperty('pageCount'))) book.pageCount = 'Not available';
   if (!(book.hasOwnProperty('publisher'))) book.publisher = 'Not available';
   if (!(book.hasOwnProperty('publishedDate'))) book.publishedDate = 'Not available';
+  if (!(book.hasOwnProperty('canonicalVolumeLink'))) book.canonicalVolumeLink = false;
 
   return (
     <div className="detailed-desc">
       <div className="detailed-title">
         <h1>Title: {book.title}</h1>
+        {/* Add a link back to homepage*/}
         <Link
-            to='/'
-            className="back-home"
-          >Back to My reads</Link>
+          to='/'
+          className="back-home"
+        >Back to My reads</Link>
       </div>
+
+      {/*
+        * Add all the info about the book
+        *   - Cover
+        *   - Title
+        *   - Author(s)
+        *   - Summary
+        *   - Number of pages
+        *   - Date of publication
+        *   - Publisher
+        *   - And a  link to Google Books where the user can buy the book
+        * If one or several of these information is not available the user is warned.
+      */}
+
       {book.hasOwnProperty('imageLinks')&&(<div className="detailed-book-cover"
         style={{backgroundImage: `url(${book.imageLinks.thumbnail})`
         }} />)}
@@ -59,17 +75,17 @@ render() {
           <span className="detailed-info">Publisher:</span>
           <span> {book.publisher}</span>
         </div>
-        <div className="detailed-summary">
+        {book.canonicalVolumeLink&&(<div className="detailed-summary">
           <span className="detailed-info">View on </span>
+          {/* href is used beacuse the link is external*/}
           <a
             href = {`${book.canonicalVolumeLink}`} >
            Google Books
           </a>
-        </div>
+        </div>)}
       </div>
     </div>
   );
-}
-}
+}}
 
 export default BookDetails;
