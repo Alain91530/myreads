@@ -167,3 +167,47 @@
   padding: 0;
   width: 100%;
 }
+
+.detailed-desc{
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-flow: wrap;
+}
+
+.detailed-title{
+border-bottom: 1px;
+border-color: grey;
+border-bottom-style: solid;
+width: 100%;
+}
+
+.detailed-book-cover{
+  /* Default background in case there is no cover pic in the database */
+  background-image: url('./icons/no_cover.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-right: 1px;
+  border-color: grey;
+  border-right-style: solid;
+  height: 80vh;
+  margin: 10px 10px 10px 10px;
+  width:20%;
+}
+
+.detailed-info{
+  color: grey;
+  text-decoration: underline;
+}
+
+.detailed-summary{
+  text-align: justify;
+  margin: 10px;
+  width: 100%;
+}
+.infos-container{
+  display: flex;
+  flex-wrap: row;
+  justify-content: flex-start;
+  width: 70%
+}

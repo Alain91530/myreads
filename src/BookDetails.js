@@ -22,6 +22,22 @@ render() {
   console.log(bookId,book)
   return (
     <div className="detailed-desc">
+      <div className="detailed-title">
+        <h1>Title: {book.title}</h1>
+      </div>
+      {book.hasOwnProperty('imageLinks')&&(<div className="detailed-book-cover"
+        style={{backgroundImage: `url(${book.imageLinks.thumbnail})`
+        }} />)}
+      <div className="infos-container">
+        <div className="detailed-summary">
+          <span className="detailed-info">Authors:</span>
+          <span> {book.authors}</span>
+        </div>
+        <div className="detailed-summary">
+          <span className="detailed-info">Summary:</span>
+          <span> {book.description}</span>
+        </div>
+      </div>
     </div>
   );
 }
