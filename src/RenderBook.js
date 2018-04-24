@@ -22,13 +22,14 @@ class RenderBook extends Component {
         <div className="book-details">
           <Link
             to = {`/details/${currentBook.id}`}
-            >
+          >
       View details</Link>
-        </div> 
+        </div>
         {/* use the cover pic as background if the book has one */}
         {currentBook.hasOwnProperty('imageLinks')&&(<div className="book-cover"
           style={{backgroundImage: `url(${currentBook.imageLinks.thumbnail})`
           }} />)}
+        {!currentBook.hasOwnProperty('imageLinks')&&(<div className="book-cover"/>)}
         <p className='book-title'> {currentBook.title}</p>
         <p className='book-authors'> {currentBook.authors}</p>
         <div className='book-shelf-changer'>

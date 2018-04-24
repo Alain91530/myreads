@@ -19,7 +19,7 @@ componentDidMount() {
 render() {
 
   const book = this.state.book;
-  
+
   /* Intialise to warn user is some info is not available */
   if (!(book.hasOwnProperty('authors'))) book.authors = 'Not available';
   if (!(book.hasOwnProperty('description'))) book.description = 'Not available';
@@ -55,6 +55,7 @@ render() {
       {book.hasOwnProperty('imageLinks')&&(<div className="detailed-book-cover"
         style={{backgroundImage: `url(${book.imageLinks.thumbnail})`
         }} />)}
+      {!book.hasOwnProperty('imageLinks')&&(<div className="book-cover"/>)}
       <div className="infos-container">
         <div className="detailed-summary">
           <span className="detailed-info">Authors:</span>
