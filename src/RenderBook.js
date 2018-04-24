@@ -1,5 +1,8 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';  // eslint-disable-line no-unused-vars
+
 
 class RenderBook extends Component {
 
@@ -16,7 +19,10 @@ class RenderBook extends Component {
     const currentBook = this.props.book;
     return(
       <div className="book-container">
-      <p className="book-details">View details</p>
+      <Link
+      to = {`/details/${currentBook.id}`}
+      className="book-details">
+      View details</Link>
         {/* use the cover pic as background if the book has one */}
         {currentBook.hasOwnProperty('imageLinks')&&(<div className="book-cover"
           style={{backgroundImage: `url(${currentBook.imageLinks.thumbnail})`
