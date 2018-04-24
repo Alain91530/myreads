@@ -40,7 +40,7 @@ class ListBooks extends Component {
               book.shelf===(Object.keys(shelf).toString()))).map((book)=>(
               <li key={book.id} className='book'>
 
-                {/* Call the component to render each book 
+                {/* Call the component to render each book
                     Passing the callback function for the change self event recieved as a
                     prop from parent and the book to render as props */}
                 <RenderBook

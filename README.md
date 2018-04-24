@@ -3,18 +3,19 @@
 
 
 
-# Fend project #6 My Reads 
+# Fend project #7 My Reads 
 ## Description
-The project purpose is to use and demonstrate React framework. It's GUI to manage a books database. The user can sort his books in 3 category:
+The project purpose is to use and demonstrate React framework. It's GUI to manage a books database. The user can sort his books in 3 categories:
 - Currently reading
 - Want to read
 - Read
+
 He can also seach a wider database to find new books and add them his books by category.
 ## Getting Started
-### Prerequistes
-To run the project you need an ES5 compliant browser
+### Prerequisites
+To run the project you need an ES5 compliant browser  
 To install the project you will need npm, [visit npm page to install it](https://www.npmjs.com/) if needed.
-The project is created with create-ract-app so all dependencies will be added these specific dependencies are:  
+The project is created with create-ract-app so all dependencies will be added.These specific dependencies are:  
 - prop-types
 - sort-by
 - react-router-dom
@@ -27,7 +28,7 @@ The project is created with create-ract-app so all dependencies will be added th
  - run `npm start` to start the application. A web page will open in your browser with the home page of the application. By default the server runs on port 3000.  
  If this port is used on your computer you can change it by setting another port in the package.json file:  
  Linux: `"start": "PORT=XXXX react-scripts start"`  
- Windows: `"start": "set PORT=3006 && react-scripts start"`  
+ Windows: `"start": "set PORT=XXXX && react-scripts start"`  
  where XXXX is the port you want
  ### Usage
  The home page display your books on 3 shelves, each book with, if available, a cover miniature, its title and its author(s).
@@ -36,7 +37,7 @@ The project is created with create-ract-app so all dependencies will be added th
  At the bottom of the page the user can click on a "plus" link wich will open a seach page where he can find new books. Books will appear instantly while he types the query for the search.
 ## Version
 - V 1.0 24/04/2018 Submission of project
-##Documentation
+## Documentation
 The poject uses 5 components  
 - App: Main page of the application showing the books on their shelves
     - no state
@@ -48,7 +49,7 @@ The poject uses 5 components
     - props: match (inherited from the <Link>)
     - Route: "/detail/:number" where number is the id of the book passed by the link. This number is retrieved in this.props.match.number.
 
-- ListBooks: Lis all books on a shelf called by App
+- ListBooks: list all books on a shelf called by ListMyBooks
     - no state
     - props:
         - book: array of objects representing the books to render
@@ -61,7 +62,7 @@ ListBooks
     - state:
         - books: array of object containing the books on shelves
     - props:
-        - shelves object of objects representing the different shelves
+        - shelves: object of objects representing the different shelves
     Route: no specific route inherited from App.
 
 - RenderBook: display each book information and its dropdown menu to select the shelf. Called by ListBook and SearchBooks.

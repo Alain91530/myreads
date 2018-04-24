@@ -78,7 +78,7 @@ render() {
         </div>
         {book.canonicalVolumeLink&&(<div className="detailed-summary">
           <span className="detailed-info">View on </span>
-          {/* href is used beacuse the link is external*/}
+          {/* href is used beacause the link is external*/}
           <a
             href = {`${book.canonicalVolumeLink}`} >
            Google Books
