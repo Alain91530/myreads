@@ -10,7 +10,7 @@ import {getAll} from './BooksAPI';
 /* Enforce type of props                                                      */
 class ListBooks extends Component {
   PropTypes = {
-    book: PropTypes.array.isRequired,
+    books: PropTypes.array.isRequired,
     updateBook: PropTypes.func.isRequired,
     shelf: PropTypes.string.isRequired
   }

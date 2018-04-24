@@ -1,5 +1,4 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
-
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';  // eslint-disable-line no-unused-vars
 

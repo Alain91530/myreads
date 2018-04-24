@@ -9,7 +9,7 @@ class ListMyBooks extends Component {
 
 /* Enforce type of props                                                      */
   static propTypes = {
-    shelves: PropTypes.array.isRequired
+    shelves: PropTypes.array.isRequired,
   }
 
   state = {
@@ -51,7 +51,7 @@ class ListMyBooks extends Component {
 
     /* Construct the DOM looping on shelves                                   */
     return (
-      
+
       <div className='shelves'>
         {shelves.map((shelf) => (
           <div key={Object.keys(shelf)} className='shelf'>

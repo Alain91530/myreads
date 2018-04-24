@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';  // eslint-disable-line no-unused-vars
 class BookDetails extends Component {
 
 state = {
-  book: {authors:[],
-    description: ''},
+  book: {},
   bookId:  this.props.match.params.number
 }
 
