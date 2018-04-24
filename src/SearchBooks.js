@@ -36,7 +36,7 @@ class SearchBooks extends Component {
       .then((books) => {this.setState({myBooks: books});})
     );});
   }
-  
+
 
   /*
    * Get all books according to the query from the data base and update state
@@ -47,24 +47,24 @@ class SearchBooks extends Component {
     * No need to search for books if query is empty (after backspacing or
      * deleting), but we need to set the new state
      */
-    if (query) 
+
+    // Update the query
+    this.setState({query});
+
+    // if query is not empty Search the query and update the component's state with the results
+    (query) ?
       search(query).then(( searchedBooks ) =>
-      // Update the query
-      {this.setState({ query });
-        // Search the query and update the component's state with the results
+      {
         (searchedBooks.length) ? this.setState({searchedBooks}) : this.setState({searchedBooks: []});
-      });
-    else {
-      // Update the state with the query to allow it comming back to ""
-      this.setState({ query });
-      // Update the books with an empty array
-      this.setState({searchedBooks: []});}
+      })
+      // otherwise Update the books with an empty array
+      :  this.setState({searchedBooks: []});
 
   }
   /*
    * Function used to check the owned book in the search result. Used to be able to
    * highligth the proper option in the select to change a book of shelf.
-   * 
+   *
    * For all owned book check if the book passed as parameter is the same
    * If not we return the book with a none shelf otherwise the shelf where it's stored
    * The check is made upon the Id which is unique
@@ -77,7 +77,7 @@ class SearchBooks extends Component {
     ownedBook.shelf = 'none';
 
     let foundBook = this.state.myBooks.filter((myBook) => (book.id===myBook.id))[0];
-    // If a book was found foundBook is truthy and we return it 
+    // If a book was found foundBook is truthy and we return it
     if (foundBook) {ownedBook = foundBook;}
     return(ownedBook);
   }
@@ -151,7 +151,7 @@ class SearchBooks extends Component {
         )}
 
         {/* Just nothing if the query is empty*/}
-        
+
       </div>
 
     );

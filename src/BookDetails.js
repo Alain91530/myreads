@@ -19,6 +19,7 @@ componentDidMount() {
 render() {
 
   const book = this.state.book;
+  
   /* Intialise to warn user is some info is not available */
   if (!(book.hasOwnProperty('authors'))) book.authors = 'Not available';
   if (!(book.hasOwnProperty('description'))) book.description = 'Not available';

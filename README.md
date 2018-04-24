@@ -3,66 +3,38 @@
 
 
 
-Fend project #4 Arcade Game  
-Description
+# Fend project #6 My Reads 
+## Description
+The project purpose is to use and demonstrate React framework. It's GUI to manage a books database. The user can sort his books in 3 category:
+- Currently reading
+- Want to read
+- Read
+He can also seach a wider database to find new books and add them his books by category.
+## Getting Started
+### Prerequistes
+To run the project you need an ES5 compliant browser
+To install the project you will need npm, [visit npm page to install it](https://www.npmjs.com/) if needed.
+### Installing
+- Clone the repository or download the files
+- Go to to the directory where you have cloned or copied the project and run:  
+ `npm install`
+ The project will install all dependencies requested.
+ - run `npm start` to start the application. A web page will open in your browser with the home page of the application.
+ ### Usage
+ The home page display your books on 3 shelves, each book with, if available, a cover miniature, its title and its author(s).
+ User can open a dropdown menu on each book allowing him to change it of shelf (category). The book will then move on the screen to go in the adequate category.  
+ He can also view more details about the book by clicking the button at the top of each book. This will navigate him to a detailed page with some more information if available in the database and a link to the Google Books page of the selected book.  
+ At the bottom of the page the user can click on a "plus" link wich will open a seach page where he can find new books. Books will appear instantly while he types the query for the search.
+## Version
+- V 1.0 24/04/2018 Submission of project
+## Buit With
+- React framework ([see homepage](https://reactjs.org/))
+## Contribution
+- BooksAPI.js provided by [Udacity](https:udacity.com)
+## Author
+- **Alain Cadenat**
 
-
-A classic arcade game following this rules:
-
-The purpose of the game is to have the player cross a road with moving enemys and reach the river at the top of the game area.
-If a collision occurs the player go back to its origin place. At each collision the player lose one life and after 3 lives the game is over and the player lose. The player must do a final move jumping in the river to win.
-The player can gain lives by collecting gems on its way to the river. Collecting the yelow gem instantly gives him 1 live and he must collect 3 green gems to get one live. The gems collected, number of lives left and time ellapsed are shown on top of the screen.
-
-The game has 3 level of difficulties:
-
-Level 1: easy, enemies are few and moving slowly.
-Level 2: medium, more enemies moving more quickly.
-Level 3: many enemies, moving fast and in both directions.
-Game commands are entered with the keyboard:
-
-Before the game starts:
-space starts the game.
-+ slelects the level (cycling choice).
-Enter selects the image of player (cycling choice).
-During the game:
-Esc game pause/resume.
-Up arrow moves player one square up
-Down arrow moves player one squere down
-left arrow moves player one square left
-right arrow moves player one square right
-Version
-V1.00 03/24/2018
-
-Installation
-Clone repository or download compressed files. Then open index.html in your browser. or just play here
-
-Realisation
-Purpose of the project was to use object oriented code. This realisation is organized with 2 main classes of objects:
-
-Game: this class holds everything about the game logic.
-Character: the items evolving in the game. those items are 3 sub-classes of this one.
-Enemy: the enemies crossing the game area.
-Player: the player.
-Gem: gems to be collected.
-Graphic animations are made with the use of canvas and a game engine provided by Udacity.
-
-Documentation
-The following diagrams show the organisation of project. See comments in source files for more detailed information on algorythm used.
-
-
-
-
-
-
-
-Author
-Alain CADENAT
-
-Credits
-Mockup and graphic engine: https://www.udacity.com
-Emojis: https://pixabay.com
-
-License
+## License
 MIT License
 
 Copyright (c) 2018 Alain CADENAT

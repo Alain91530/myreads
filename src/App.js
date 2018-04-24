@@ -21,7 +21,7 @@ class App extends Component {
 
     /*
      * Set the header of the app and then
-     * - Call ListBooks component to display the books if at the home page.      
+     * - Call ListBooks component to display the books if at the home page.
      * - Or call SearchIBooks for the search page
      */
     return (
@@ -33,7 +33,7 @@ class App extends Component {
           <div>
             <ListMyBooks
               shelves={shelves}
-            />        
+            />
             <Link
               to='/search'
               className="search-book">
