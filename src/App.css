@@ -64,6 +64,16 @@
   width:15vw;
 }
 
+.book-details{
+  background-color: aqua;
+  border: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  margin: auto;
+  margin-bottom: 10px;
+  width:80px
+}
+
 .book-shelf-changer {  
   background: rgb(0, 174, 255);
   background-position: center;
