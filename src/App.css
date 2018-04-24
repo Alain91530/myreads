@@ -203,11 +203,11 @@ width: 100%;
 .detailed-summary{
   text-align: justify;
   margin: 10px;
-  width: 100%;
+  width: 70%;
 }
 .infos-container{
   display: flex;
-  flex-wrap: row;
+  flex-flow: column;
   justify-content: flex-start;
-  width: 70%
+  width: 75vw
 }

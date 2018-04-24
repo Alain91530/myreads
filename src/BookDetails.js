@@ -4,7 +4,7 @@ import {get} from './BooksAPI';
 class BookDetails extends Component {
 
 state = {
-  book: {title: ''},
+  book: {},
   bookId:  this.props.match.params.number
 }
 
@@ -16,10 +16,8 @@ componentDidMount() {
 
 render() {
 
-  const bookId = this.props.bookId;
   const book = this.state.book;
 
-  console.log(bookId,book)
   return (
     <div className="detailed-desc">
       <div className="detailed-title">
