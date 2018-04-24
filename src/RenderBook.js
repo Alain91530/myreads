@@ -19,10 +19,12 @@ class RenderBook extends Component {
     const currentBook = this.props.book;
     return(
       <div className="book-container">
-      <Link
-      to = {`/details/${currentBook.id}`}
-      className="book-details">
+        <div className="book-details">
+          <Link
+            to = {`/details/${currentBook.id}`}
+            >
       View details</Link>
+        </div> 
         {/* use the cover pic as background if the book has one */}
         {currentBook.hasOwnProperty('imageLinks')&&(<div className="book-cover"
           style={{backgroundImage: `url(${currentBook.imageLinks.thumbnail})`
