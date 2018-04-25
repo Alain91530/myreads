@@ -5,12 +5,12 @@
 
 # Fend project #7 My Reads 
 ## Description
-The project purpose is to use and demonstrate React framework. It's GUI to manage a books database. The user can sort his books in 3 categories:
+The project purpose is to use and demonstrate React framework. It's a GUI to manage a books database. The user can sort his books in 3 categories:
 - Currently reading
 - Want to read
 - Read
 
-He can also seach a wider database to find new books and add them his books by category.
+He can also seach a wider database to find new books and add them to his books by category.
 ## Getting Started
 ### Prerequisites
 To run the project you need an ES5 compliant browser  
